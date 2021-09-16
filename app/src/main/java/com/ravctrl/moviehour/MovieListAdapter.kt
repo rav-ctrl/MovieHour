@@ -4,30 +4,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.ravctrl.moviehour.databinding.MovieListItemBinding
 
-class MovieListAdapter(private val names: List<String>) :
+class MovieListAdapter(private val movieDataList: List<TempMovieData>) :
     RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {
 
-    class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val txtname = itemView.findViewById(R.id.movieName) as TextView
-    }
+    inner class MovieListViewHolder(val movieDataBinding: MovieListItemBinding) :
+        RecyclerView.ViewHolder(movieDataBinding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.movie_list_item, parent, false)
-        return MovieListViewHolder(view)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MovieListViewHolder(
+        DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.movie_list_item,
+            parent,
+            false
+        )
+    )
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
-        // Getting element from names list at this position
-        val element = names[position]
-        // attached shit via viewmodel
-        holder.txtname.text = element
+        holder.movieDataBinding.movieData = movieDataList[position]
     }
 
     override fun getItemCount(): Int {
-        return names.size
+        return movieDataList.size
     }
 
 }

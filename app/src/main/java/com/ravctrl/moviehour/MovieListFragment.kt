@@ -24,12 +24,11 @@ class MovieListFragment : Fragment() {
         rclNames.setHasFixedSize(true)
 
         // Creating an instance of our NameAdapter class and setting it to our RecyclerView
-        val nameList =  getListOfNames()
+        val nameList =  getDataItems()
         val namesAdapter = MovieListAdapter(nameList)
         rclNames.adapter = namesAdapter
 
         rclNames.layoutManager = LinearLayoutManager(requireContext())
-
     }
 
     override fun onCreateView(
@@ -47,28 +46,19 @@ class MovieListFragment : Fragment() {
     }
 
     // This function just creates a list of names for us
-    private fun getListOfNames(): MutableList<String> {
-        val nameList = mutableListOf<String>()
-        nameList.add("Ali")
-        nameList.add("Sophia")
-        nameList.add("Isabella")
-        nameList.add("Mason")
-        nameList.add("Jacob")
-        nameList.add("William")
-        nameList.add("Olivia")
-        nameList.add("Jayden")
-        nameList.add("Chloe")
-        nameList.add("Ella")
-        nameList.add("Anthony")
-        nameList.add("Joshua")
-        nameList.add("James")
-        nameList.add("Grace")
-        nameList.add("Samantha")
-        nameList.add("Nicholas")
-        nameList.add("Brianna")
-        nameList.add("Justin")
-        nameList.add("Lauren")
-        nameList.add("Kimberly")
+    private fun getDataItems(): MutableList<TempMovieData> {
+        val urlHeader = "https://image.tmdb.org/t/p/w500/"
+        val nameList = mutableListOf<TempMovieData>()
+        nameList.add(TempMovieData("Ali",urlHeader+"wto7rICtlIr8MpekJhhnh2CPBK6.jpg"))
+        nameList.add(TempMovieData("Sophia",urlHeader+"xeItgLK9qcafxbd8kYgv7XnMEog.jpg"))
+        nameList.add(TempMovieData("Isabella",urlHeader+"kb4s0ML0iVZlG6wAKbbs9NAm6X.jpg"))
+        nameList.add(TempMovieData("Mason",urlHeader+"34nDCQZwaEvsy4CFO5hkGRFDCVU.jpg"))
+        nameList.add(TempMovieData("Jacob",urlHeader+"dGv2BWjzwAz6LB8a8JeRIZL8hSz.jpg"))
+        nameList.add(TempMovieData("William",urlHeader+"6Y9fl8tD1xtyUrOHV2MkCYTpzgi.jpg"))
+        nameList.add(TempMovieData("Olivia",urlHeader+"hRMfgGFRAZIlvwVWy8DYJdLTpvN.jpg"))
+        nameList.add(TempMovieData("Jayden",urlHeader+"jGYJyPzVgrVV2bgClI9uvEZgVLE.jpg"))
+        nameList.add(TempMovieData("Chloe",urlHeader+"qAZ0pzat24kLdO3o8ejmbLxyOac.jpg"))
+        nameList.add(TempMovieData("Ella",urlHeader+"cP7odDzzFBD9ycxj2laTeFWGLjD.jpg"))
 
         return nameList
     }
