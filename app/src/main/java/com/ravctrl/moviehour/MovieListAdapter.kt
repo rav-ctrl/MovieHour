@@ -8,8 +8,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ravctrl.moviehour.databinding.MovieListItemBinding
 
-class MovieListAdapter(private val movieDataList: List<TempMovieData>) :
+class MovieListAdapter() :
     RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {
+
+    private lateinit var movieDataList: List<TempMovieData>
+
+    fun setMovieList(_movieDataList: MutableList<TempMovieData>){
+        movieDataList = _movieDataList
+        notifyDataSetChanged()
+    }
 
     inner class MovieListViewHolder(val movieDataBinding: MovieListItemBinding) :
         RecyclerView.ViewHolder(movieDataBinding.root)
