@@ -1,4 +1,4 @@
-package com.ravctrl.moviehour
+package com.ravctrl.moviehour.ui.TrendingMovies
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,16 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ravctrl.moviehour.R
+import com.ravctrl.moviehour.data.MainRepo
+import com.ravctrl.moviehour.data.MovieData
+import com.ravctrl.moviehour.data.RetrofitService
 
-class MovieListFragment : Fragment() {
+class TrendingMovieListFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MovieListFragment()
+        fun newInstance() = TrendingMovieListFragment()
     }
 
-    private lateinit var viewModel: MovieListViewModel
+    private lateinit var VM: TrendingMoviesListVM
     private lateinit var rclNames:RecyclerView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,17 +40,17 @@ class MovieListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MovieListViewModel::class.java)
-
+        VM = ViewModelProvider(this).get(TrendingMoviesListVM::class.java)
+        VM.getAllMovies()
         rclNames.setHasFixedSize(true)
 
-        val movielist =  viewModel.getDataItems().value
-        val namesAdapter = MovieListAdapter()
-        movielist?.let { namesAdapter.setMovieList(it) }
+        val namesAdapter = TrendingMoviesListAdapter()
+        namesAdapter.setMovieList(listOf()) //Sending Empty List
+
         rclNames.adapter = namesAdapter
 
-        viewModel.ldNameList.observe(viewLifecycleOwner, Observer {
-            it?.let { namesAdapter.setMovieList(it) }
+        VM.responseLiveData.observe(viewLifecycleOwner, Observer {
+            it?.let { it.body()?.let { it1 -> namesAdapter.setMovieList(it1?.movieData) } }
         })
     }
 

@@ -7,7 +7,7 @@
         
         <variable
             name="movieData"
-            type="com.ravctrl.moviehour.TempMovieData" />
+            type="com.ravctrl.moviehour.data.MovieData" />
         
     </data>
 
@@ -26,7 +26,7 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
-                app:image="@{movieData.imageName}"
+                app:image="@{movieData.posterPath}"
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
                 android:scaleType="centerCrop"/>
@@ -36,8 +36,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@{movieData.movieName}"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:text="@{movieData.title}"/>
 
             <Button
                 android:layout_width="match_parent"

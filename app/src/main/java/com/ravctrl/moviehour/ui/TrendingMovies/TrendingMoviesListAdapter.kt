@@ -1,19 +1,20 @@
-package com.ravctrl.moviehour
+package com.ravctrl.moviehour.ui.TrendingMovies
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.ravctrl.moviehour.R
+import com.ravctrl.moviehour.data.MovieData
+import com.ravctrl.moviehour.data.TrendingMoviesDataModel
 import com.ravctrl.moviehour.databinding.MovieListItemBinding
 
-class MovieListAdapter() :
-    RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {
+class TrendingMoviesListAdapter() :
+    RecyclerView.Adapter<TrendingMoviesListAdapter.MovieListViewHolder>() {
 
-    private lateinit var movieDataList: List<TempMovieData>
+    private lateinit var movieDataList: List<MovieData>
 
-    fun setMovieList(_movieDataList: MutableList<TempMovieData>){
+    fun setMovieList(_movieDataList: List<MovieData>){
         movieDataList = _movieDataList
         notifyDataSetChanged()
     }
@@ -35,7 +36,7 @@ class MovieListAdapter() :
     }
 
     override fun getItemCount(): Int {
-        return movieDataList.size
+        return movieDataList?.size
     }
 
 }
