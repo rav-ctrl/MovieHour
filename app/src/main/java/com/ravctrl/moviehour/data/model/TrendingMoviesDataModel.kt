@@ -1,4 +1,4 @@
-package com.ravctrl.moviehour.data
+package com.ravctrl.moviehour.data.model
 
 
 import com.google.gson.annotations.SerializedName

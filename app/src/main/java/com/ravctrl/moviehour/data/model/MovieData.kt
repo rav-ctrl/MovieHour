@@ -1,8 +1,13 @@
-package com.ravctrl.moviehour.data
+package com.ravctrl.moviehour.data.model
 
 
+import androidx.annotation.NonNull
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import org.jetbrains.annotations.NonNls
 
+@Entity(tableName = "TrendingMovies")
 data class MovieData(
     @SerializedName("adult")
     val adult: Boolean,
@@ -10,6 +15,8 @@ data class MovieData(
     val backdropPath: String,
     @SerializedName("genre_ids")
     val genreIds: List<Int>,
+    @PrimaryKey
+    @NonNull
     @SerializedName("id")
     val id: Int,
     @SerializedName("original_language")

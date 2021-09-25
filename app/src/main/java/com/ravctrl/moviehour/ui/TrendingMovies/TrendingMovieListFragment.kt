@@ -9,9 +9,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.ravctrl.moviehour.R
-import com.ravctrl.moviehour.data.MainRepo
-import com.ravctrl.moviehour.data.MovieData
-import com.ravctrl.moviehour.data.RetrofitService
 
 class TrendingMovieListFragment : Fragment() {
 

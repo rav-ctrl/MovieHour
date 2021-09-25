@@ -5,8 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ravctrl.moviehour.R
-import com.ravctrl.moviehour.data.MovieData
-import com.ravctrl.moviehour.data.TrendingMoviesDataModel
+import com.ravctrl.moviehour.data.model.MovieData
 import com.ravctrl.moviehour.databinding.MovieListItemBinding
 
 class TrendingMoviesListAdapter() :
