@@ -6,9 +6,9 @@ import com.ravctrl.moviehour.data.model.MovieData
 @Dao
 interface TrendingMoviesDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveMovies(MovieDataList: List<MovieData>)
+    suspend fun saveMovies(MovieData: MovieData)
 
-    @Delete
+    @Query("DELETE FROM TrendingMovies")
     suspend fun deleteMovies()
 
     @Query("SELECT * FROM TrendingMovies")
