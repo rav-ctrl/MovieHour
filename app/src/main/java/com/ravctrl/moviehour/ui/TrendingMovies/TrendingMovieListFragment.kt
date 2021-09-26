@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.ravctrl.moviehour.R
+import com.ravctrl.moviehour.data.MainRepo
+import com.ravctrl.moviehour.data.remote.RetrofitService
 
 class TrendingMovieListFragment : Fragment() {
 
@@ -37,7 +39,15 @@ class TrendingMovieListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        VM = ViewModelProvider(this).get(TrendingMoviesListVM::class.java)
+        val mainRepo = MainRepo(
+            RetrofitService
+            .getRetrofitInstance()
+            .create(RetrofitService::class.java))
+        val vmfac = TrendingMoviesListVMFac(mainRepo)
+        VM = ViewModelProvider(this,vmfac)
+            .get(TrendingMoviesListVM::class.java)
+
+//        VM = ViewModelProvider(this).get(TrendingMoviesListVM::class.java)
         VM.getAllMovies()
         rclNames.setHasFixedSize(true)
 
