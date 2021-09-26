@@ -6,11 +6,9 @@ import retrofit2.Response
 
 class MainRepo constructor(private val retrofitService: RetrofitService){
 
-    suspend fun getTrendingMovies(): Response<TrendingMoviesDataModel> {
-        val retService = RetrofitService
+    suspend fun getTrendingMovies(): Response<TrendingMoviesDataModel> =
+        RetrofitService
             .getRetrofitInstance()
             .create(RetrofitService::class.java)
-        val response = retService.getTrendingMovies()
-        return response
-    }
+            .getTrendingMovies()
 }
