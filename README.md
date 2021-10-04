@@ -20,6 +20,9 @@ MovieHour uses a number of open source projects and library to work properly:
 - [Room Database] - evented I/O for the backend
 - [Retrofit] - fast node.js network app framework
 
+## Screenshot
+![Alt text](https://github.com/rav-ctrl/MovieHour/blob/main/s1.jpg?raw=true "Optional Title")
+
 ## Contribution process
 * Contribute your code in the branch 'master'. It will give us a better chance to test your code before merging it with stable code.
 * For your first contribution start a pull request on master.
@@ -32,7 +35,7 @@ MovieHour uses a number of open source projects and library to work properly:
 ### Create pull request:
 * Commit your changes locally: ```git commit -a```
 * Push your changes to your GitHub repo: ```git push```
-* Browse to <https://github.com/ctrl-rav/android/pulls> and issue pull request
+* Browse to <https://github.com/ctrl-rav/> and issue pull request
 * Enter description and send pull request.
 
 
